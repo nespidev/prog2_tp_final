@@ -1,4 +1,19 @@
 class Artista:
+    
+    def __init__(self, id, nom):
+        self.id = id
+        self.nombre = nom
+
+    #Comandos
+    def establecerNombre(self, nom):
+        self.nombre = nom
+
+    #Consultas
+    def obtenerId(self):
+        return self.id
+    
+    def obtenerNombre(self):
+        return self.nombre
 
     def obtenerGeneros(self):
         generos = []

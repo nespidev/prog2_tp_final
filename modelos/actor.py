@@ -4,6 +4,14 @@ from modelos.artista import Artista
 
 class Actor(Artista):
 
+    def __init__(self):
+        super().__init__()
+    
+    def obtenerPeliculas(self):
+        peliculas = []
+        #completar
+        #biblioteca.obtenerPeliculas()
+
     def __repr__(self):
         return json.dumps(self.convertirAJSON())
 
@@ -27,3 +35,6 @@ class Actor(Artista):
         colegas = self.obtenerColegas()
         colegasMapa = map(lambda a: a.obtenerNombre(), colegas)
         return list(colegasMapa)
+    
+    def __eq__(self, otro):
+        return self.id == otro.id
