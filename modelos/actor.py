@@ -4,13 +4,23 @@ from modelos.artista import Artista
 
 class Actor(Artista):
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, id, nom):
+        super().__init__(id, nom)
     
     def obtenerPeliculas(self):
         peliculas = []
-        #completar
-        #biblioteca.obtenerPeliculas()
+        for pelicula in biblioteca.Biblioteca.obtenerPeliculas():
+            if self in pelicula.obtenerActores():
+                peliculas.append(pelicula)
+            return peliculas
+        
+    def obtenerColegas(self):
+        colegas = set()
+
+        for pelicula in self.obtenerPeliculas():
+            colegas.update(pelicula.obtenerActores())
+        colegas.remove(self)  # Eliminar actual actor de la lista de colegas
+        return list(colegas)
 
     def __repr__(self):
         return json.dumps(self.convertirAJSON())
@@ -37,4 +47,4 @@ class Actor(Artista):
         return list(colegasMapa)
     
     def __eq__(self, otro):
-        return self.id == otro.id
+        return self.obtenerId() == otro.obtenerId()

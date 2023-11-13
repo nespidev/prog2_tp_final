@@ -1,25 +1,25 @@
 class Artista:
     
     def __init__(self, id, nom):
-        self.id = id
-        self.nombre = nom
+        self.__id = id
+        self.__nombre = nom
 
     #Comandos
     def establecerNombre(self, nom):
-        self.nombre = nom
+        self.__nombre = nom
 
     #Consultas
     def obtenerId(self):
-        return self.id
+        return self.__id
     
     def obtenerNombre(self):
-        return self.nombre
+        return self.__nombre
 
     def obtenerGeneros(self):
-        generos = []
+        generos = set()
         for pelicula in self.obtenerPeliculas():
-            generos.append(pelicula.obtenerGenero())
-        generos = [generos[i] for i in range(len(generos)) if i == generos.index(generos[i]) ] # remueve generos duplicados
+            if self in pelicula:
+                generos.update(pelicula.obtenerGenero())
         return generos
 
     def _mapearGeneros(self):
