@@ -26,7 +26,7 @@ class Biblioteca:
         actores = Biblioteca.__actores
         if isinstance(orden, str):
             if orden == 'nombre':
-                pass # completar
+                actores = sorted(actores, key=lambda actor: actor.obtenerPeliculas(), reverse=reverso)
             elif orden == 'colegas':
                 pass # completar
             elif orden == 'peliculas':
@@ -35,18 +35,28 @@ class Biblioteca:
 
     def obtenerDirectores(orden=None, reverso=False):
         directores = Biblioteca.__directores
+        # directores_ordenado = []
         if isinstance(orden, str):
             if orden == 'nombre':
-                pass # completar
+                # nombres = []
+                # for director in directores:
+                #     nombres.append(director.obtenerNombre())
+                # nombres.sort(reverse=reverso)
+                # for nombre in nombres:
+                #     for director in directores:
+                #         if nombre == director.obtenerNombre():
+                #             directores_ordenado.append(director)
+                directores = sorted(directores, key=lambda director: director.obtenerNombre(), reverse=reverso)
+
             elif orden == 'peliculas':
-                pass # completar
+                directores = sorted(directores, key=lambda director: director.obtenerPeliculas(), reverse=reverso)
         return directores
 
     def obtenerPeliculas(orden=None, reverso=False):
         peliculas = Biblioteca.__peliculas
         if isinstance(orden, str):
             if orden == 'nombre':
-                pass # completar
+                peliculas = sorted(peliculas, key=lambda pelicula: pelicula.obtenerNombre(), reverse=reverso)
             elif orden == 'director':
                 pass # completar
             elif orden == 'actores':
@@ -74,6 +84,7 @@ class Biblioteca:
         for director in directores:
             if director.obtenerId() == id:
                 return director
+        return None
 
     def buscarGenero(id):
         generos = Biblioteca.__generos

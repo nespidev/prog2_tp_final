@@ -16,12 +16,13 @@ class Actor(Artista):
         return peliculas
         
     def obtenerColegas(self):
-        colegas = []   
-        for pelicula in self.obtenerPeliculas():
+        colegas = []
+        peliculas = biblioteca.Biblioteca.obtenerPeliculas()  
+        for pelicula in peliculas:
             actores = pelicula.obtenerActores()
             for actor in actores:
-                colegas.append(actor)
-                print(actor.obtenerNombre())
+                if actor not in colegas and actor is not self:
+                    colegas.append(actor)
         return colegas
 
     def __repr__(self):

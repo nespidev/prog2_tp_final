@@ -22,8 +22,8 @@ class Artista:
             director = pelicula.obtenerDirector()
             if self == director or self in pelicula.obtenerActores():
                 genero = pelicula.obtenerGenero()
-                # if genero not in generos:
-                generos.append(genero)
+                if genero not in generos:
+                    generos.append(genero)
         return generos
 
     def _mapearGeneros(self):

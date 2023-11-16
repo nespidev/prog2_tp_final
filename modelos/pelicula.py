@@ -38,12 +38,6 @@ class Pelicula:
         return biblioteca.Biblioteca.buscarDirector(self.__director)
     
     def obtenerActores(self):
-        # actores = []
-        # for actor in biblioteca.Biblioteca.obtenerActores():
-        #     for elemento in self.__actores:
-        #         if elemento['id'] == actor.obtenerId():
-        #             actores.append(actor)
-        # return actores
         devolverActores = []
         todosLosActores = biblioteca.Biblioteca.obtenerActores()
 
