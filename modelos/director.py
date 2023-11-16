@@ -4,13 +4,13 @@ from modelos.artista import Artista
 
 class Director(Artista):
 
-    def __init__(self, id, nom):
-        super().__init__(id,nom)
+    def __init__(self, id, nombre):
+        super().__init__(id, nombre)
 
     def obtenerPeliculas(self):
         peliculas = []
         for pelicula in biblioteca.Biblioteca.obtenerPeliculas():
-            if self in pelicula.obtenerDirectores():
+            if self is pelicula.obtenerDirector():
                 peliculas.append(pelicula)
             return peliculas
     
@@ -31,5 +31,8 @@ class Director(Artista):
             "peliculas": self._mapearPeliculas(),
         }
     
-    def __eq__(self, otro):
-        return self.obtenerId() == otro.obtenerId()
+    def __eq__(self, director):
+        # if isinstance(otro, Director):
+            return self.obtenerId() == director.obtenerId()
+        # else:
+        #     print ('director equals',otro)

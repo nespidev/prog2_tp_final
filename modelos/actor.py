@@ -4,23 +4,25 @@ from modelos.artista import Artista
 
 class Actor(Artista):
 
-    def __init__(self, id, nom):
-        super().__init__(id, nom)
+    def __init__(self, id, nombre):
+        super().__init__(id, nombre)
     
     def obtenerPeliculas(self):
         peliculas = []
         for pelicula in biblioteca.Biblioteca.obtenerPeliculas():
-            if self in pelicula.obtenerActores():
-                peliculas.append(pelicula)
-            return peliculas
+            for actor in pelicula.obtenerActores():
+                if self is actor:
+                    peliculas.append(pelicula)
+        return peliculas
         
     def obtenerColegas(self):
-        colegas = set()
-
+        colegas = []   
         for pelicula in self.obtenerPeliculas():
-            colegas.update(pelicula.obtenerActores())
-        colegas.remove(self)  # Eliminar actual actor de la lista de colegas
-        return list(colegas)
+            actores = pelicula.obtenerActores()
+            for actor in actores:
+                colegas.append(actor)
+                print(actor.obtenerNombre())
+        return colegas
 
     def __repr__(self):
         return json.dumps(self.convertirAJSON())

@@ -1,8 +1,8 @@
 class Artista:
     
-    def __init__(self, id, nom):
+    def __init__(self, id, nombre):
         self.__id = id
-        self.__nombre = nom
+        self.__nombre = nombre
 
     #Comandos
     def establecerNombre(self, nom):
@@ -16,10 +16,14 @@ class Artista:
         return self.__nombre
 
     def obtenerGeneros(self):
-        generos = set()
-        for pelicula in self.obtenerPeliculas():
-            if self in pelicula:
-                generos.update(pelicula.obtenerGenero())
+        generos = []
+        peliculas = self.obtenerPeliculas()
+        for pelicula in peliculas:
+            director = pelicula.obtenerDirector()
+            if self == director or self in pelicula.obtenerActores():
+                genero = pelicula.obtenerGenero()
+                # if genero not in generos:
+                generos.append(genero)
         return generos
 
     def _mapearGeneros(self):

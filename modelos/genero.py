@@ -3,12 +3,18 @@ import json
 
 class Genero:
 
-    def __init__(self, id, nom):
+    def __init__(self, id, nombre):
         self.__id = id
-        self.__nombre = nom
+        self.__nombre = nombre
 
-    def establecerNombre(self, nom):
-        self.__nombre = nom
+    def establecerNombre(self, nombre):
+        self.__nombre = nombre
+    
+    def obtenerId(self):
+        return self.__id
+    
+    def obtenerNombre(self):
+        return self.__nombre
 
     def __repr__(self):
         return json.dumps({

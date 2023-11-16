@@ -2,12 +2,12 @@ import json
 import biblioteca
 
 class Pelicula:
-    def __init__(self, id, nom, gen, dir, actrs, anio):
+    def __init__(self, id, nombre, genero, director, actores, anio):
         self.__id = id
-        self.__nombre = nom
-        self.__genero = gen
-        self.__director = dir
-        self.__actores = actrs
+        self.__nombre = nombre
+        self.__genero = genero
+        self.__director = director
+        self.__actores = actores
         self.__anio = anio
 
     def establecerNombre(self, nom):
@@ -38,11 +38,23 @@ class Pelicula:
         return biblioteca.Biblioteca.buscarDirector(self.__director)
     
     def obtenerActores(self):
-        
-        return [biblioteca.Biblioteca.buscarActores(actor) for actor in self.__actores]
+        # actores = []
+        # for actor in biblioteca.Biblioteca.obtenerActores():
+        #     for elemento in self.__actores:
+        #         if elemento['id'] == actor.obtenerId():
+        #             actores.append(actor)
+        # return actores
+        devolverActores = []
+        todosLosActores = biblioteca.Biblioteca.obtenerActores()
+
+        for actorEnTodos in todosLosActores:
+            for actorEnPeli in self.__actores:
+                if actorEnPeli['id'] == actorEnTodos.obtenerId():
+                    devolverActores.append(actorEnTodos)
+        return devolverActores
     
     def obtenerAnio(self):
-        return self.anio
+        return self.__anio
     
         
     def __repr__(self):

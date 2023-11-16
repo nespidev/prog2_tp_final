@@ -21,3 +21,5 @@ if __name__ == "__main__":
     api.add_resource(RecursoPeliculas, '/api/peliculas')
 
     app.run()
+    # print(Biblioteca.obtenerDirectores())
+    # print(Biblioteca.obtenerActores())

@@ -23,6 +23,7 @@ class Biblioteca:
         Biblioteca.__convertirJsonAListas(datos)
 
     def obtenerActores(orden=None, reverso=False):
+        actores = Biblioteca.__actores
         if isinstance(orden, str):
             if orden == 'nombre':
                 pass # completar
@@ -30,17 +31,19 @@ class Biblioteca:
                 pass # completar
             elif orden == 'peliculas':
                 pass # completar
-        pass # completar
+        return actores
 
     def obtenerDirectores(orden=None, reverso=False):
+        directores = Biblioteca.__directores
         if isinstance(orden, str):
             if orden == 'nombre':
                 pass # completar
             elif orden == 'peliculas':
                 pass # completar
-        pass # completar
+        return directores
 
     def obtenerPeliculas(orden=None, reverso=False):
+        peliculas = Biblioteca.__peliculas
         if isinstance(orden, str):
             if orden == 'nombre':
                 pass # completar
@@ -50,28 +53,61 @@ class Biblioteca:
                 pass # completar
             elif orden == 'anio':
                 pass # completar
-        pass # completar
+        return peliculas
 
     def obtenerGeneros(orden=None, reverso=False):
+        generos = Biblioteca.__generos
         if isinstance(orden, str):
             if orden == 'nombre':
                 pass # completar
-        pass # completar
+        return generos
 
     def buscarActor(id):
-        pass # completar
+        actores = Biblioteca.__actores
+        for actor in actores:
+            if actor.obtenerId() == id:
+                return actor
+        return None
 
     def buscarDirector(id):
-        pass # completar
+        directores = Biblioteca.__directores
+        for director in directores:
+            if director.obtenerId() == id:
+                return director
 
     def buscarGenero(id):
-        pass # completar
+        generos = Biblioteca.__generos
+        for genero in generos:
+            if genero.obtenerId() == id:
+                return genero
+        return None
 
     def buscarPelicula(id):
-        pass # completar
+        peliculas = Biblioteca.__peliculas
+        for pelicula in peliculas:
+            if pelicula.obtenerId() == id:
+                return pelicula
+        return None
 
     def __parsearArchivoDeDatos():
-        pass # completar
+        archivo = open(Biblioteca.__archivoDeDatos, "r")
+        datos = json.load(archivo)
+        archivo.close()
+        return datos
 
     def __convertirJsonAListas(lista):
-        pass # completar
+        Biblioteca.__peliculas = []
+        for pelicula in lista["peliculas"]:
+            Biblioteca.__peliculas.append(Pelicula(**pelicula))
+
+        Biblioteca.__generos = []
+        for genero in lista["generos"]:
+            Biblioteca.__generos.append(Genero(**genero))
+
+        Biblioteca.__directores = []
+        for director in lista["directores"]:
+            Biblioteca.__directores.append(Director(**director))
+
+        Biblioteca.__actores = []
+        for actor in lista["actores"]:
+            Biblioteca.__actores.append(Actor(**actor))
