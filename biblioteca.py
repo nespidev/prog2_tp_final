@@ -23,10 +23,12 @@ class Biblioteca:
     __generos = []
     __peliculas = []
 
+    #Comandos
     def inicializar():
         datos = Biblioteca.__parsearArchivoDeDatos()
         Biblioteca.__convertirJsonAListas(datos)
 
+    #Consultas
     def obtenerActores(orden=None, reverso=False):
         actores = Biblioteca.__actores
         if isinstance(orden, str):
