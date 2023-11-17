@@ -1,3 +1,8 @@
+#TRABAJO INTEGRADOR FINAL
+#PROGRAMACIÓN 2 - 2023 – 2do cuatrimestre
+#TECNICATURA UNIVERSITARIA EN DESARROLLO WEB
+#ALUMNO: Juan Nahuel Espinola Grativol
+
 # librerias
 import os
 import json
@@ -26,29 +31,24 @@ class Biblioteca:
         actores = Biblioteca.__actores
         if isinstance(orden, str):
             if orden == 'nombre':
-                actores = sorted(actores, key=lambda actor: actor.obtenerPeliculas(), reverse=reverso)
+                #Se ordena alfabeticamente por su nombre
+                actores = sorted(actores, key=lambda actor: actor.obtenerNombre(), reverse=reverso)
             elif orden == 'colegas':
-                pass # completar
+                #Se ordena por cantidad de colegas
+                actores = sorted(actores, key=lambda actor: len(actor.obtenerColegas()), reverse=reverso)
             elif orden == 'peliculas':
-                pass # completar
+                #Se ordena por cantidad de peliculas
+                actores = sorted(actores, key=lambda actor: len(actor.obtenerPeliculas()), reverse=reverso)
         return actores
 
     def obtenerDirectores(orden=None, reverso=False):
         directores = Biblioteca.__directores
-        # directores_ordenado = []
         if isinstance(orden, str):
             if orden == 'nombre':
-                # nombres = []
-                # for director in directores:
-                #     nombres.append(director.obtenerNombre())
-                # nombres.sort(reverse=reverso)
-                # for nombre in nombres:
-                #     for director in directores:
-                #         if nombre == director.obtenerNombre():
-                #             directores_ordenado.append(director)
+                #Se ordena alfabeticamente por su nombre
                 directores = sorted(directores, key=lambda director: director.obtenerNombre(), reverse=reverso)
-
             elif orden == 'peliculas':
+                #Se ordena por cantidad de peliculas
                 directores = sorted(directores, key=lambda director: director.obtenerPeliculas(), reverse=reverso)
         return directores
 
@@ -56,20 +56,25 @@ class Biblioteca:
         peliculas = Biblioteca.__peliculas
         if isinstance(orden, str):
             if orden == 'nombre':
+                #Se ordena alfabeticamente por su nombre
                 peliculas = sorted(peliculas, key=lambda pelicula: pelicula.obtenerNombre(), reverse=reverso)
             elif orden == 'director':
-                pass # completar
+                #Se ordena alfabeticamente por nombre de director
+                peliculas = sorted(peliculas, key=lambda pelicula: pelicula.obtenerDirector(), reverse=reverso)
             elif orden == 'actores':
-                pass # completar
+                #Se ordena alfabeticamente por cantidad de actores
+                peliculas = sorted(peliculas, key=lambda pelicula: len(pelicula.obtenerActores()), reverse=reverso)
             elif orden == 'anio':
-                pass # completar
+                #Se ordena por año de salida
+                peliculas = sorted(peliculas, key=lambda pelicula: pelicula.obtenerAnio(), reverse=reverso)
         return peliculas
 
     def obtenerGeneros(orden=None, reverso=False):
         generos = Biblioteca.__generos
         if isinstance(orden, str):
             if orden == 'nombre':
-                pass # completar
+                #Se ordena alfabeticamente por su nombre
+                generos = sorted(generos, key=lambda genero: genero.obtenerNombre(), reverse=reverso)
         return generos
 
     def buscarActor(id):

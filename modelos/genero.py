@@ -1,5 +1,9 @@
-import json
+#TRABAJO INTEGRADOR FINAL
+#PROGRAMACIÓN 2 - 2023 – 2do cuatrimestre
+#TECNICATURA UNIVERSITARIA EN DESARROLLO WEB
+#ALUMNO: Juan Nahuel Espinola Grativol
 
+import json
 
 class Genero:
 
@@ -7,9 +11,11 @@ class Genero:
         self.__id = id
         self.__nombre = nombre
 
+    #Comandos
     def establecerNombre(self, nombre):
         self.__nombre = nombre
     
+    #Consultas
     def obtenerId(self):
         return self.__id
     

@@ -1,7 +1,13 @@
+#TRABAJO INTEGRADOR FINAL
+#PROGRAMACIÓN 2 - 2023 – 2do cuatrimestre
+#TECNICATURA UNIVERSITARIA EN DESARROLLO WEB
+#ALUMNO: Juan Nahuel Espinola Grativol
+
 import json
 import biblioteca
 
 class Pelicula:
+    
     def __init__(self, id, nombre, genero, director, actores, anio):
         self.__id = id
         self.__nombre = nombre
@@ -10,6 +16,7 @@ class Pelicula:
         self.__actores = actores
         self.__anio = anio
 
+    #Comandos
     def establecerNombre(self, nom):
         self.__nombre = nom
 
@@ -25,6 +32,7 @@ class Pelicula:
     def establecerAnio(self, anio):
         self.__anio = anio
 
+    #Consultas
     def obtenerId(self):
         return self.__id
     

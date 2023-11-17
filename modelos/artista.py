@@ -1,3 +1,8 @@
+#TRABAJO INTEGRADOR FINAL
+#PROGRAMACIÓN 2 - 2023 – 2do cuatrimestre
+#TECNICATURA UNIVERSITARIA EN DESARROLLO WEB
+#ALUMNO: Juan Nahuel Espinola Grativol
+
 class Artista:
     
     def __init__(self, id, nombre):
