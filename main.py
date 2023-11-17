@@ -1,3 +1,8 @@
+#TRABAJO INTEGRADOR FINAL
+#PROGRAMACIÓN 2 - 2023 – 2do cuatrimestre
+#TECNICATURA UNIVERSITARIA EN DESARROLLO WEB
+#ALUMNO: Juan Nahuel Espinola Grativol
+
 # Flask
 from flask import Flask
 from flask_restful import Api
