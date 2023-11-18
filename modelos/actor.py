@@ -23,11 +23,10 @@ class Actor(Artista):
         
     def obtenerColegas(self):
         colegas = []
-        todasLasPeliculas = biblioteca.Biblioteca.obtenerPeliculas()
-        peliculasDeActor = self.obtenerPeliculas()
-        for pelicula in todasLasPeliculas:
-            if pelicula in peliculasDeActor:
-                actores = pelicula.obtenerActores()
+        peliculas = biblioteca.Biblioteca.obtenerPeliculas()  
+        for pelicula in peliculas:
+            actores = pelicula.obtenerActores()
+            if self in actores:
                 for actor in actores:
                     if actor not in colegas and actor is not self:
                         colegas.append(actor)
